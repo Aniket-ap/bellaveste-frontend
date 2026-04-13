@@ -26,55 +26,79 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Forgot password</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Enter your email and we&apos;ll send a reset link.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[color:var(--bv-bg)] py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-6">
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-3 text-xs tracking-[0.18em] uppercase text-[color:var(--bv-muted)] hover:text-[color:var(--bv-text)] transition-colors"
+            >
+              <span className="h-10 w-10 rounded-full bg-black/5 flex items-center justify-center text-[color:var(--bv-text)]">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 18l-6-6 6-6" />
+                </svg>
+              </span>
+              Back to Login
+            </Link>
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            <div className="mt-10">
+              <div className="text-xs tracking-[0.22em] uppercase text-[color:var(--bv-muted)]">Recovery</div>
+              <h1 className="mt-3 text-5xl sm:text-6xl font-bold tracking-tight text-[color:var(--bv-text)]">
+                RESET<br />PASSWORD
+              </h1>
+              <div className="mt-4 text-sm text-[color:var(--bv-muted)] max-w-md">
+                Enter your email address and we&apos;ll send you a link to reset your password.
+              </div>
             </div>
           </div>
 
-          {error ? <div className="text-red-500 text-sm text-center">{error}</div> : null}
-          {success ? <div className="text-green-600 text-sm text-center">{success}</div> : null}
+          <div className="lg:col-span-6">
+            <div className="rounded-[2.25rem] border border-[color:var(--bv-border)] bg-[color:var(--bv-surface)]/60 p-6 sm:p-8">
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 gap-4">
+                  <div>
+                    <div className="text-xs tracking-[0.22em] uppercase text-[color:var(--bv-muted)]">Email</div>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      className="mt-2 h-12 w-full rounded-[1.25rem] bg-[color:var(--bv-surface)]/70 border border-[color:var(--bv-border)] px-4 text-sm text-[color:var(--bv-text)] outline-none focus:border-[color:var(--bv-border-strong)]"
+                      placeholder="you@domain.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
 
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-                loading ? 'opacity-75 cursor-not-allowed' : ''
-              }`}
-            >
-              {loading ? 'Sending...' : 'Send reset link'}
-            </button>
+                {error ? (
+                  <div className="rounded-[1.5rem] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    {error}
+                  </div>
+                ) : null}
+                
+                {success ? (
+                  <div className="rounded-[1.5rem] border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                    {success}
+                  </div>
+                ) : null}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full h-12 rounded-[1.25rem] text-xs tracking-[0.18em] uppercase transition-colors ${
+                    loading
+                      ? 'bg-black/10 text-black/30 cursor-not-allowed'
+                      : 'bg-[color:var(--bv-pill-bg)] text-[color:var(--bv-pill-text)] hover:bg-black'
+                  }`}
+                >
+                  {loading ? 'Sending...' : 'Send reset link'}
+                </button>
+              </form>
+            </div>
           </div>
-        </form>
-
-        <div className="text-center text-sm">
-          <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Back to login
-          </Link>
         </div>
       </div>
     </div>
