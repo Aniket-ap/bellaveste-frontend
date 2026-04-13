@@ -7,13 +7,13 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import { ForgotPassword, Login, Register, ResetPassword } from "./pages/Auth";
 import Profile from "./pages/Profile";
 
-const Home = React.lazy(() => import("./pages/home"));
+const Home = React.lazy(() => import("./pages/Home"));
 const Shop = React.lazy(() => import("./pages/Shop"));
 const Error = React.lazy(() => import("./components/ui/Error"));
 const ProductDetails = React.lazy(() => import("./pages/ProductDetails"));
 const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
 const Cart = React.lazy(() => import("./pages/Cart"));
-const Checkout = React.lazy(() => import("./pages/checkout"));
+const Checkout = React.lazy(() => import("./pages/Checkout"));
 const ThankYou = React.lazy(() => import("./pages/ThankYou/index.jsx"));
 const Orders = React.lazy(() => import("./pages/Orders"));
 
